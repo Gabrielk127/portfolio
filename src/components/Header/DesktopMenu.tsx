@@ -52,6 +52,14 @@ const DesktopMenu = () => {
             </motion.div>
           ))}
         </nav>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0, transition: { delay: 0.5 } }}
+        >
+          <button className="bg-principal text-white font-bold px-6 py-2 rounded-xl hover:bg-principal hover:text-black transition duration-300">
+            Entre em contato
+          </button>
+        </motion.div>
       </div>
     </header>
   );

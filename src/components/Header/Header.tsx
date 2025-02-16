@@ -4,10 +4,10 @@ import MobileMenu from "./MobileMenu";
 const Header = () => {
   return (
     <div>
-      <div className="md:hidden">
+      <div className="lg:hidden">
         <MobileMenu />
       </div>
-      <div className="hidden md:flex">
+      <div className="hidden lg:flex">
         <DesktopMenu />
       </div>
     </div>

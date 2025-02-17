@@ -3,7 +3,7 @@ import { FiArrowRight } from "react-icons/fi";
 
 const MyWork = () => {
   return (
-    <main className=" text-white p-4 md:p-6 lg:p-8 max-w-7xl mx-auto md:mt-12 md:flex md:flex-row md:items-center md:gap-12">
+    <main className="min-h-screen text-white p-4 md:p-6 lg:p-8 max-w-7xl mx-auto md:mt-12 md:flex md:flex-row md:items-center md:gap-12">
       <div>
         <h2 className="text-white text-3xl font-bold text-center mb-2 md:text-start">
           Meu Trabalho

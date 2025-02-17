@@ -3,7 +3,7 @@
 import Header from "@/components/Header/Header";
 import Hero from "@/components/Sections/Hero";
 import MyWork from "@/components/Sections/MyWork";
-import PortfolioGrid from "@/components/Sections/PortfolioGrid";
+import ProjectGrid from "@/components/Sections/ProjectCard";
 
 export default function Home() {
   return (
@@ -16,7 +16,7 @@ export default function Home() {
         <MyWork />
       </section>
       <section>
-        <PortfolioGrid />
+        <ProjectGrid />
       </section>
     </main>
   );

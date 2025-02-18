@@ -74,7 +74,7 @@ export default function Freelance() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <div className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-6 text-lg rounded-3xl hover:font-bold hover:cursor-pointer">
+            <div className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-4 text-lg rounded-3xl hover:font-bold hover:cursor-pointer max-w-xl mx-auto">
               Iniciar Projeto
             </div>
           </a>

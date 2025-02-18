@@ -147,7 +147,7 @@ function FeedCard({ name, image, description }: Feedback) {
 
 export default function Testimonials() {
   return (
-    <main className="min-h-screen text-white p-4 md:p-6 lg:p-8 max-w-7xl mx-auto md:mt-12 flex flex-col justify-center items-center">
+    <main className=" text-white p-4 md:p-6 lg:p-8 max-w-7xl mx-auto mt-12 mb-32 flex flex-col justify-center items-center">
       <h2 className="text-center text-3xl text-white font-bold mb-12">
         Meus Projetos
       </h2>

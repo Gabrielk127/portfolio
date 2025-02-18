@@ -36,8 +36,8 @@ export default function Footer() {
                 rel="noopener noreferrer"
               >
                 <Image
-                  src="/Social/instagram.png"
-                  alt="Linkedin"
+                  src="/Social/Instagram.png"
+                  alt="instagram"
                   width={100}
                   height={100}
                   className="w-12"
@@ -50,8 +50,8 @@ export default function Footer() {
                 rel="noopener noreferrer"
               >
                 <Image
-                  src="/Social/whatsapp.png"
-                  alt="Linkedin"
+                  src="/Social/Whatsapp.png"
+                  alt="Whatsapp"
                   width={100}
                   height={100}
                   className="w-12"

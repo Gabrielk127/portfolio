@@ -43,7 +43,7 @@ const Hero = () => {
         softwares sob medida com foco em performance, usabilidade e design.
         Transformo ideias em soluções digitais eficientes e impactantes.
       </p>
-      <div className="pt-12">
+      <div className="pt-12 max-w-xl">
         <CarouselImage />
       </div>
     </main>

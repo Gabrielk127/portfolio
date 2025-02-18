@@ -23,7 +23,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
               >
                 <Image
-                  src="/Social/Linkedin.svg"
+                  src="/Social/Linkedin.png"
                   alt="Linkedin"
                   width={100}
                   height={100}
@@ -36,7 +36,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
               >
                 <Image
-                  src="/Social/instagram.svg"
+                  src="/Social/instagram.png"
                   alt="Linkedin"
                   width={100}
                   height={100}
@@ -50,7 +50,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
               >
                 <Image
-                  src="/Social/whatsapp.svg"
+                  src="/Social/whatsapp.png"
                   alt="Linkedin"
                   width={100}
                   height={100}

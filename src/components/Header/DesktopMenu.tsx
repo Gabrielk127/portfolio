@@ -56,9 +56,17 @@ const DesktopMenu = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0, transition: { delay: 0.5 } }}
         >
-          <button className="bg-principal text-white font-bold px-6 py-2 rounded-xl hover:bg-principal hover:text-black transition duration-300">
-            Entre em contato
-          </button>
+          <a
+            href="https://wa.me/5543998377239?text=Olá,%20gostaria%20de%20tirar%20minhas%20dúvidas%20sobre%20o%20freelance!
+
+"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <button className="bg-principal text-white font-bold px-6 py-2 rounded-xl hover:bg-principal hover:text-black transition duration-300">
+              Entre em contato
+            </button>
+          </a>
         </motion.div>
       </div>
     </header>

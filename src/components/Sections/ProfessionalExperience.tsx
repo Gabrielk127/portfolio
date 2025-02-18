@@ -189,7 +189,7 @@ const ProfessionalExperience: React.FC = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="p-4 md:p-6 lg:p-8 max-w-7xl mx-auto md:mt-12 text-white min-h-screen"
+      className="p-4 md:p-6 lg:p-8 max-w-7xl mx-auto md:mt-12 text-white "
     >
       <motion.h1
         initial={{ opacity: 0, y: -20 }}

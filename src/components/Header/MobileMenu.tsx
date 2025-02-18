@@ -120,9 +120,18 @@ const MobileMenu = () => {
               animate={{ opacity: 1, y: 0, transition: { delay: 0.5 } }}
               className="mt-8"
             >
-              <button className="bg-principal text-white px-6 py-3 rounded-xl hover:bg-principal transition duration-300">
-                Entre em contato
-              </button>
+              {" "}
+              <a
+                href="https://wa.me/5543998377239?text=Olá,%20gostaria%20de%20tirar%20minhas%20dúvidas%20sobre%20o%20freelance!
+
+"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <button className="bg-principal text-white px-6 py-3 rounded-xl hover:bg-principal transition duration-300">
+                  Entre em contato
+                </button>
+              </a>
             </motion.div>
           </motion.div>
         )}

@@ -46,7 +46,7 @@ export default function CarouselImage() {
                 width={300}
                 height={200}
                 unoptimized
-                className="rounded-lg shadow-md object-cover w-12 h-12"
+                className="rounded-lg shadow-md object-cover w-6 h-6"
               />
             </div>
           ))}

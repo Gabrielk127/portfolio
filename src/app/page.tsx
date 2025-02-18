@@ -1,6 +1,7 @@
 "use client";
 
 import Header from "@/components/Header/Header";
+import Testimonials from "@/components/Sections/Testimonials";
 import Hero from "@/components/Sections/Hero";
 import MyWork from "@/components/Sections/MyWork";
 import ProfessionalExperience from "@/components/Sections/ProfessionalExperience";
@@ -21,6 +22,9 @@ export default function Home() {
       </section>
       <section>
         <ProfessionalExperience />
+      </section>
+      <section>
+        <Testimonials />
       </section>
     </main>
   );

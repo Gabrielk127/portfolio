@@ -133,7 +133,7 @@ const ScrambledTitle: React.FC = () => {
     <div className="flex flex-col items-center text-center">
       <h1
         ref={nameRef}
-        className="text-white text-4xl sm:text-5xl md:text-6xl font-bold tracking-wider mb-2 sm:mb-4"
+        className="text-white text-3xl sm:text-5xl md:text-6xl font-bold tracking-wider mb-2 sm:mb-4"
         style={{ fontFamily: "monospace" }}
       >
         Gabriel Fernandes

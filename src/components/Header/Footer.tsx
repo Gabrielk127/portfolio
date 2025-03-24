@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
-import Image from "next/image";
+import { Instagram, Linkedin, Phone } from "lucide-react";
 
 export default function Footer() {
   const menuItems = [
@@ -21,41 +21,26 @@ export default function Footer() {
                 href="https://www.linkedin.com/in/gabriel-fernandes-920421204/"
                 target="_blank"
                 rel="noopener noreferrer"
+                className="cursor-pointer hover:text-principal"
               >
-                <Image
-                  src="/Social/Linkedin.png"
-                  alt="Linkedin"
-                  width={100}
-                  height={100}
-                  className="w-12"
-                />
+                <Linkedin size={32} />
               </a>
               <a
                 href="https://www.instagram.com/gabrielk127/"
                 target="_blank"
                 rel="noopener noreferrer"
+                className="cursor-pointer hover:text-principal"
               >
-                <Image
-                  src="/Social/Instagram.png"
-                  alt="instagram"
-                  width={100}
-                  height={100}
-                  className="w-12"
-                />
+                <Instagram size={32} />
               </a>
               <a
                 href="https://wa.me/+5543998377239?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20seus%20serviços!
 "
                 target="_blank"
                 rel="noopener noreferrer"
+                className="cursor-pointer hover:text-principal"
               >
-                <Image
-                  src="/Social/Whatsapp.png"
-                  alt="Whatsapp"
-                  width={100}
-                  height={100}
-                  className="w-12"
-                />
+                <Phone size={32} />
               </a>
             </motion.div>
           </div>

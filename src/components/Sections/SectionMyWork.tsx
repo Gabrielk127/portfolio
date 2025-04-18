@@ -3,7 +3,7 @@ import { FiArrowRight } from "react-icons/fi";
 
 const SectionMyWork = () => {
   return (
-    <main className="min-h-screen bg-[var(--PrimaryBackground)] text-white flex justify-center items-center">
+    <main className="relative min-h-screen bg-[var(--PrimaryBackground)] text-white flex justify-center items-center">
       <div className="p-4 md:p-6 lg:p-8 max-w-7xl mx-auto md:mt-12 md:flex md:flex-row md:items-center md:gap-12">
         <div>
           <h2 className="text-[var(--foreground)] text-3xl font-bold text-center mb-2 md:text-start">

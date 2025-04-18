@@ -1,23 +1,23 @@
 import Image from "next/image";
 import { FiArrowRight } from "react-icons/fi";
 
-const MyWork = () => {
+const SectionMyWork = () => {
   return (
-    <main className="min-h-screen bg-black text-white flex justify-center items-center">
+    <main className="min-h-screen bg-[var(--PrimaryBackground)] text-white flex justify-center items-center">
       <div className="p-4 md:p-6 lg:p-8 max-w-7xl mx-auto md:mt-12 md:flex md:flex-row md:items-center md:gap-12">
         <div>
-          <h2 className="text-white text-3xl font-bold text-center mb-2 md:text-start">
-            Meu Trabalho
+          <h2 className="text-[var(--foreground)] text-3xl font-bold text-center mb-2 md:text-start">
+            Meu Projeto Atual
           </h2>
           <p
-            className="text-gray-400 text-center py-4 md:text-start
+            className="text-[var(--text-foreground)] text-center py-4 md:text-start
         xl:text-2xl max-w-[1000px] xl:mx-auto
         "
           >
-            Método Superbi é um dos projetos que desenvolvi, combinando design
-            moderno e tecnologia de ponta para oferecer uma experiência fluida e
-            envolvente. Cada detalhe foi pensado para entregar performance e
-            usabilidade
+            Método Superbi é um dos projetos que estou desenvolvendo, combinando
+            design moderno e tecnologia de ponta para oferecer uma experiência
+            fluida e envolvente. Cada detalhe foi pensado para entregar
+            performance e usabilidade
           </p>
           <div className="hidden md:flex md:flex-col md:justify-start">
             <div className="flex flex-row items-center gap-6 py-4">
@@ -52,7 +52,7 @@ const MyWork = () => {
                 className="w-8"
               />
             </div>
-            <a
+            {/* <a
               href="https://github.com/Gabrielk127/Curso-Superbi"
               target="_blank"
               rel="noopener noreferrer"
@@ -63,7 +63,7 @@ const MyWork = () => {
                 </p>
                 <FiArrowRight />
               </div>
-            </a>
+            </a> */}
           </div>
         </div>
 
@@ -127,4 +127,4 @@ const MyWork = () => {
   );
 };
 
-export default MyWork;
+export default SectionMyWork;

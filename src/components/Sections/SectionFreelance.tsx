@@ -1,6 +1,6 @@
 import { Clock, Code, Lightbulb, Rocket } from "lucide-react";
 
-export default function Freelance() {
+export default function SectionFreelance() {
   const services = [
     {
       icon: <Code className="w-8 h-8 text-purple-500" />,
@@ -26,11 +26,16 @@ export default function Freelance() {
   ];
 
   return (
-    <section className="w-full bg-black text-white py-20">
+    <section
+      id="freelance"
+      className="w-full bg-[var(--PrimaryBackground)] text-white py-20"
+    >
       <div className="max-w-6xl mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold mb-4">Serviços Freelance</h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">
+          <h2 className="text-[var(--foreground)] text-3xl font-bold mb-4">
+            Serviços Freelance
+          </h2>
+          <p className="text-[var(--text-foreground)] max-w-2xl mx-auto">
             Transformando ideias em soluções digitais com expertise técnica e
             comprometimento com qualidade
           </p>
@@ -40,11 +45,15 @@ export default function Freelance() {
           {services.map((service, index) => (
             <div
               key={index}
-              className="bg-zinc-900 border-zinc-800 p-6 rounded-3xl"
+              className="bg-[var(--background)] border border-zinc-100 shadow-lg dark:border-zinc-800 p-6 rounded-3xl"
             >
               <div className="mb-4">{service.icon}</div>
-              <h3 className="text-xl font-semibold mb-3">{service.title}</h3>
-              <p className="text-gray-400 mb-4">{service.description}</p>
+              <h3 className="text-[var(--foreground)] text-xl font-semibold mb-3">
+                {service.title}
+              </h3>
+              <p className="text-[var(--text-foreground)] mb-4">
+                {service.description}
+              </p>
               <div className="flex flex-wrap gap-2">
                 {service.skills.map((skill, idx) => (
                   <div
@@ -63,7 +72,7 @@ export default function Freelance() {
           <div className="flex items-center justify-center gap-4 mb-8">
             <Clock className="w-5 h-5 text-purple-500" />
 
-            <span className="text-gray-400">
+            <span className="text-[var(--text-foreground)]">
               Disponível para novos projetos
             </span>
           </div>
@@ -74,7 +83,7 @@ export default function Freelance() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <div className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-4 text-lg rounded-3xl hover:font-bold hover:cursor-pointer max-w-xl mx-auto">
+            <div className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-4 text-lg rounded-xl hover:font-bold hover:cursor-pointer max-w-xl mx-auto">
               Iniciar Projeto
             </div>
           </a>

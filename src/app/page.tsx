@@ -1,38 +1,34 @@
 "use client";
 
-import Header from "@/components/Header/Header";
-import Testimonials from "@/components/Sections/Testimonials";
-// import Hero from "@/components/Sections/Hero";
-import MyWork from "@/components/Sections/MyWork";
-import ProfessionalExperience from "@/components/Sections/ProfessionalExperience";
-import ProjectGrid from "@/components/Sections/ProjectCard";
-import Freelance from "@/components/Sections/Freelance";
-import Footer from "@/components/Header/Footer";
-import RainingLetters from "@/components/Sections/HeroRaining";
+import Header from "@/components/layout/Header/Header";
+import SectionTestimonials from "@/components/Sections/SectionTestimonials";
+import SectionMyWork from "@/components/Sections/SectionMyWork";
+import SectionExperience from "@/components/Sections/SectionExperience";
+import SectionFreelance from "@/components/Sections/SectionFreelance";
+import Footer from "@/components/layout/Footer";
+import SectionHero from "@/components/Sections/SectionHero";
+import SectionProjects from "@/components/Sections/SectionProjects";
+import { useEffect, useState } from "react";
 
 export default function Home() {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    return null;
+  }
   return (
     <main>
       <Header />
-      <section id="inicio">
-        <RainingLetters />
-        {/* <Hero /> */}
-      </section>
-      <section>
-        <MyWork />
-      </section>
-      <section id="projetos">
-        <ProjectGrid />
-      </section>
-      <section id="experiencia">
-        <ProfessionalExperience />
-      </section>
-      <section id="depoimentos">
-        <Testimonials />
-      </section>
-      <section id="freelance">
-        <Freelance />
-      </section>
+      <SectionHero />
+      <SectionMyWork />
+      <SectionProjects />
+      <SectionExperience />
+      <SectionTestimonials />
+      <SectionFreelance />
       <Footer />
     </main>
   );

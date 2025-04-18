@@ -133,14 +133,14 @@ const ScrambledTitle: React.FC = () => {
     <div className="flex flex-col items-center text-center">
       <h1
         ref={nameRef}
-        className="text-white text-3xl sm:text-5xl md:text-6xl font-bold tracking-wider mb-2 sm:mb-4"
+        className="text-4xl sm:text-6xl md:text-8xl font-bold mb-6 md:mb-8 tracking-tight"
         style={{ fontFamily: "monospace" }}
       >
         Gabriel Fernandes
       </h1>
       <h2
         ref={titleRef}
-        className="text-white text-xl sm:text-2xl md:text-3xl font-semibold tracking-wide"
+        className="text-base sm:text-lg md:text-xl mb-8 leading-relaxed font-light tracking-wide max-w-xl mx-auto px-4"
         style={{ fontFamily: "monospace" }}
       >
         Software Developer
@@ -149,7 +149,7 @@ const ScrambledTitle: React.FC = () => {
   );
 };
 
-const RainingLetters: React.FC = () => {
+const SectionHero: React.FC = () => {
   const [characters, setCharacters] = useState<Character[]>([]);
   const [activeIndices, setActiveIndices] = useState<Set<number>>(new Set());
 
@@ -218,7 +218,10 @@ const RainingLetters: React.FC = () => {
   }, []);
 
   return (
-    <div className="relative w-full h-screen bg-black overflow-hidden">
+    <div
+      id="inicio"
+      className="relative w-full h-screen overflow-hidden bg-[var(--background)]"
+    >
       {/* Title */}
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 w-full px-4">
         <ScrambledTitle />
@@ -245,7 +248,7 @@ const RainingLetters: React.FC = () => {
             opacity: activeIndices.has(index) ? 1 : 0.4,
             transition: "color 0.1s, transform 0.1s, text-shadow 0.1s",
             willChange: "transform, top",
-            fontSize: "clamp(1rem, 3vw, 1.8rem)",
+            fontSize: "clamp(1rem, 3vw, 1rem)",
           }}
         >
           {char.char}
@@ -262,4 +265,4 @@ const RainingLetters: React.FC = () => {
   );
 };
 
-export default RainingLetters;
+export default SectionHero;

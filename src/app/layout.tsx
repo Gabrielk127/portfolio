@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <Analytics />
-      <body className={`bg-[#1E1E1E] ${poppins}`}>{children}</body>
+      <body className={` ${poppins}`}>{children}</body>
     </html>
   );
 }

@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import ThemeToggle from "../ThemeToggle";
 
 const DesktopMenu = () => {
   const menuItems = [
@@ -11,14 +12,14 @@ const DesktopMenu = () => {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-black bg-opacity-30 backdrop-blur-lg shadow-lg py-4 max-w-[1200px] rounded-3xl mx-auto mt-4">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-[var(--background)] bg-opacity-30 backdrop-blur-lg shadow-lg py-4 max-w-[1200px] rounded-3xl mx-auto mt-4">
       <div className="container mx-auto flex justify-between items-center px-8 gap-4">
         {/* Logo ou Nome do Site */}
         <motion.div
           className="text-white text-3xl font-bold cursor-pointer"
           whileHover={{ scale: 1.05 }}
         >
-          <a href="#inicio" className="text-white">
+          <a href="#inicio" className="text-[var(--foreground)]">
             Gabriel <span className="text-principal">Fernandes</span>
           </a>
         </motion.div>
@@ -38,7 +39,7 @@ const DesktopMenu = () => {
             >
               <a
                 href={item.href}
-                className="text-white text-lg hover:text-principal transition text-nowrap"
+                className="text-[var(--foreground)] text-lg hover:text-principal transition text-nowrap"
               >
                 {item.label}
               </a>
@@ -68,6 +69,7 @@ const DesktopMenu = () => {
             </button>
           </a>
         </motion.div>
+        <ThemeToggle />
       </div>
     </header>
   );

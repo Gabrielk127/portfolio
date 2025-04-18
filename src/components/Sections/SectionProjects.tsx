@@ -14,6 +14,7 @@ interface Project {
   description: string;
   image: string;
   technologies: string[];
+  type: "site" | "landing-page" | "app" | "automacao";
   liveUrl?: string;
   githubUrl?: string;
 }
@@ -25,6 +26,7 @@ const projects: Project[] = [
     description: "Site moderno desenvolvido para uma floricultura.",
     image: "/Projects/AuroraFloral.png",
     technologies: ["Next.js", "TypeScript", "Tailwind CSS", "ReactJs"],
+    type: "site",
     liveUrl: "https://aurora-floral-floricultura.vercel.app/",
     githubUrl: "https://github.com/Gabrielk127/aurora-floral-floricultura",
   },
@@ -35,6 +37,7 @@ const projects: Project[] = [
       "Site desenvolvido para alavancar a presença online de um comércio de toldos",
     image: "/Projects/ToldosLondrina.png",
     technologies: ["Next.js", "TypeScript", "Tailwind CSS", "ReactJs"],
+    type: "site",
     liveUrl: "https://toldos.vercel.app",
   },
   {
@@ -44,6 +47,7 @@ const projects: Project[] = [
       "Site desenvolvido para uma barbearia aumentar seu público na internet.",
     image: "/Projects/BarberShop.png",
     technologies: ["Next.js", "TypeScript", "Tailwind CSS", "ReactJs"],
+    type: "site",
     liveUrl: "https://barber-shop-six-delta.vercel.app/",
     githubUrl: "https://github.com/Gabrielk127/BarberShop",
   },
@@ -54,6 +58,7 @@ const projects: Project[] = [
       "Página moderna e responsiva para apresentar estratégias de alavancagem financeira.",
     image: "/Projects/alavancagem2.png",
     technologies: ["Next.js", "TypeScript", "Tailwind CSS", "ReactJs"],
+    type: "site",
     liveUrl: "http://alavancagem.axnegocioscreditoseinvestimentos.com",
     githubUrl: "https://github.com/Gabrielk127/landing-page-alavancagem",
   },
@@ -64,6 +69,7 @@ const projects: Project[] = [
       "Combinando design moderno e tecnologia de ponta para oferecer uma experiência fluida e envolvente.",
     image: "/Projects/metodosuperbi.png",
     technologies: ["Next.js", "TypeScript", "Tailwind CSS", "ReactJs"],
+    type: "landing-page",
     liveUrl:
       "https://curso-superbi-k65th1ibk-gabrielfsilva09-gmailcoms-projects.vercel.app",
     githubUrl: "https://github.com/Gabrielk127/Curso-Superbi",
@@ -75,6 +81,7 @@ const projects: Project[] = [
       "Site institucional para consultoria financeira, destacando serviços de crédito.",
     image: "/Projects/consultoria.png",
     technologies: ["Next.js", "TypeScript", "Tailwind CSS", "ReactJs"],
+    type: "landing-page",
     liveUrl: "https://consultoria.axnegocioscreditoseinvestimentos.com",
     githubUrl:
       "https://github.com/Gabrielk127/landing-page-consultoria-gratuita-armangni",
@@ -86,6 +93,7 @@ const projects: Project[] = [
       "Página moderna e responsiva para apresentar estratégias de alavancagem financeira, com gráficos interativos e chamadas para ação eficientes.",
     image: "/Projects/alavancagem.png",
     technologies: ["Next.js", "TypeScript", "Tailwind CSS", "ReactJs"],
+    type: "landing-page",
     githubUrl: "https://github.com/Gabrielk127/landing-page-alavancagem",
   },
   {
@@ -95,6 +103,7 @@ const projects: Project[] = [
       "Aplicativo Mobile multiplataforma de controle financeiro em desenvolvimento.",
     image: "/Projects/appfinan.png",
     technologies: ["Expo", "TypeScript", "Tailwind CSS", "React Native"],
+    type: "app",
     githubUrl: "https://github.com/Gabrielk127/AppFi",
   },
   {
@@ -104,6 +113,7 @@ const projects: Project[] = [
       "Aplicativo Mobile multiplataforma contendo informações sobre plantas, atualmente em desenvolvimento",
     image: "/Projects/Breath.png",
     technologies: ["Expo", "TypeScript", "Tailwind CSS", "React Native"],
+    type: "app",
     githubUrl: "https://github.com/Gabrielk127/Plants",
   },
   {
@@ -113,6 +123,7 @@ const projects: Project[] = [
       "Uma landing page moderna e responsiva para o setor de construções, projetada para oferecer uma experiência fluida e atraente aos usuários.",
     image: "/Projects/malls.png",
     technologies: ["Next.js", "TypeScript", "Tailwind CSS", "ReactJs"],
+    type: "landing-page",
     liveUrl: "https://malls.axnegocioscreditoseinvestimentos.com",
     githubUrl: "https://github.com/Gabrielk127/landing-page-cds-malls-armangni",
   },
@@ -123,6 +134,7 @@ const projects: Project[] = [
       "Um gerador de currículos eficiente e intuitivo, projetado para facilitar a criação e gerenciamento de currículos de forma prática e organizada.",
     image: "/Projects/curriculum.png",
     technologies: ["Python", "HTML", "CSS", "MongoDB"],
+    type: "automacao",
     githubUrl: "https://github.com/Gabrielk127/curriculum-manager",
   },
   {
@@ -132,42 +144,70 @@ const projects: Project[] = [
       "Landing page totalmente responsiva e com design interativo desenvolvida para captação de clientes por meio de formulário",
     image: "/Projects/autos.png",
     technologies: ["Next.js", "TypeScript", "Tailwind CSS", "ReactJs"],
+    type: "landing-page",
     liveUrl: "https://autos.axnegocioscreditoseinvestimentos.com",
     githubUrl: "https://github.com/Gabrielk127/landing-page-autos-armangni",
   },
 ];
 
-export default function ProjectGrid() {
+export default function SectionProjects() {
   const [current, setCurrent] = useState(0);
   const [autoplay, setAutoplay] = useState(true);
   const [hoveredId, setHoveredId] = useState<number | null>(null);
+  const [activeFilter, setActiveFilter] = useState<string>("todos");
   const isMobile = useMediaQuery("(max-width: 768px)");
   // const isTablet = useMediaQuery("(min-width: 769px) and (max-width: 1024px)")
   const carouselRef = useRef<HTMLDivElement>(null);
+
+  // Filter projects based on the active filter
+  const filteredProjects =
+    activeFilter === "todos"
+      ? projects
+      : projects.filter((project) => project.type === activeFilter);
+
+  // Reset current index when filter changes
+  useEffect(() => {
+    setCurrent(0);
+  }, [activeFilter]);
 
   useEffect(() => {
     if (!autoplay || !isMobile) return;
 
     const interval = setInterval(() => {
-      setCurrent((prev) => (prev === projects.length - 1 ? 0 : prev + 1));
+      setCurrent((prev) =>
+        prev === filteredProjects.length - 1 ? 0 : prev + 1
+      );
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [autoplay, isMobile]);
+  }, [autoplay, isMobile, filteredProjects.length]);
 
   const next = () => {
     setAutoplay(false);
-    setCurrent((prev) => (prev === projects.length - 1 ? 0 : prev + 1));
+    setCurrent((prev) => (prev === filteredProjects.length - 1 ? 0 : prev + 1));
   };
 
   const prev = () => {
     setAutoplay(false);
-    setCurrent((prev) => (prev === 0 ? projects.length - 1 : prev - 1));
+    setCurrent((prev) => (prev === 0 ? filteredProjects.length - 1 : prev - 1));
   };
+
+  // Add this function to handle filter changes
+  const handleFilterChange = (filter: string) => {
+    setActiveFilter(filter);
+    setAutoplay(false);
+  };
+
+  // bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow border border-gray-100 group
+  // const { theme } = useTheme();
+  // const isDark = theme === "dark";
 
   const renderProject = (project: Project) => (
     <div
-      className="h-full group relative overflow-hidden bg-zinc-900/80 backdrop-blur-sm border border-zinc-800 rounded-2xl shadow-xl transition-all duration-300 hover:shadow-purple-500/10 hover:border-purple-500/30"
+      id="projetos"
+      className={`
+    h-full group relative overflow-hidden transition-all duration-300 hover:shadow-purple-500/10 hover:border-purple-500/30 rounded-2xl border shadow-lg border-zinc-100 bg-white dark:bg-[#202020] dark:border-zinc-800 dark:shadow-xl
+  `}
       onMouseEnter={() => setHoveredId(project.id)}
       onMouseLeave={() => setHoveredId(null)}
     >
@@ -185,7 +225,7 @@ export default function ProjectGrid() {
       </div>
 
       <div className="p-6 space-y-4">
-        <h3 className="text-xl font-bold text-white group-hover:text-purple-300 transition-colors duration-300">
+        <h3 className="text-xl font-bold text-[var(--foreground)] group-hover:text-purple-300 transition-colors duration-300">
           {project.title}
         </h3>
         <p className="text-gray-400 line-clamp-3 group-hover:text-gray-300 transition-colors duration-300">
@@ -214,7 +254,7 @@ export default function ProjectGrid() {
               href={project.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 shadow-md hover:shadow-purple-500/20"
+              className="flex items-center bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 shadow-md hover:shadow-purple-500/20"
             >
               <Globe className="w-4 h-4 mr-2" />
               Ver Projeto
@@ -225,7 +265,7 @@ export default function ProjectGrid() {
               href={project.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center border border-zinc-700 hover:border-purple-500/50 bg-zinc-800/50 hover:bg-zinc-800 text-gray-300 hover:text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300"
+              className="flex items-center border border-zinc-100 dark:border-zinc-800 hover:border-purple-500/50 bg-zinc-800/50 hover:bg-zinc-800 text-gray-300 hover:text-white px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300"
             >
               <Github className="w-4 h-4 mr-2" />
               Código
@@ -244,23 +284,86 @@ export default function ProjectGrid() {
   );
 
   return (
-    <div className="min-h-screen text-white p-4 md:p-6 lg:p-8 max-w-7xl mx-auto md:mt-12">
+    <div className="min-h-screen p-4 md:p-6 lg:p-8 max-w-7xl mx-auto md:mt-12">
       <div className="flex flex-col items-center mb-12">
-        <Badge className="mb-3 bg-purple-500/30 text-purple-300 hover:bg-purple-500/40 px-4 py-1 text-sm font-medium tracking-wider">
+        <Badge className="rounded mb-3 bg-purple-500/90 text-purple-300 hover:bg-purple-500/40 px-4 py-1 text-sm font-medium tracking-wider">
           Portfolio
         </Badge>
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-white bg-clip-text text-transparent bg-gradient-to-r from-white to-purple-300">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-[var(--foreground)] bg-clip-text  bg-gradient-to-r from-white to-purple-300">
           Meus Projetos
         </h2>
-        <p className="text-muted-foreground text-center max-w-2xl text-gray-400">
+        <p className="text-center max-w-2xl text-[var(--text-foreground)]">
           Conheça alguns dos projetos que desenvolvi utilizando as mais recentes
           tecnologias web.
         </p>
       </div>
 
+      {/* Filter buttons */}
+      <div className="flex flex-wrap justify-center gap-2 mb-8">
+        <button
+          onClick={() => handleFilterChange("todos")}
+          className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+            activeFilter === "todos"
+              ? "bg-purple-600 text-white shadow-lg shadow-purple-500/20"
+              : "bg-[var(--background)] shadow-lg border border-zinc-100  dark:border-zinc-800 text-[var(--foreground)] hover:shadow-purple-500/10 hover:border-purple-500/30"
+          }`}
+        >
+          Todos
+        </button>
+        <button
+          onClick={() => handleFilterChange("site")}
+          className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+            activeFilter === "site"
+              ? "bg-purple-600 text-white shadow-lg shadow-purple-500/20"
+              : "bg-[var(--background)] shadow-lg border border-zinc-100  dark:border-zinc-800 text-[var(--foreground)] hover:shadow-purple-500/10 hover:border-purple-500/30"
+          }`}
+        >
+          Sites
+        </button>
+        <button
+          onClick={() => handleFilterChange("landing-page")}
+          className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+            activeFilter === "landing-page"
+              ? "bg-purple-600 text-white shadow-lg shadow-purple-500/20"
+              : "bg-[var(--background)] shadow-lg border border-zinc-100  dark:border-zinc-800 text-[var(--foreground)] hover:shadow-purple-500/10 hover:border-purple-500/30"
+          }`}
+        >
+          Landing Pages
+        </button>
+        <button
+          onClick={() => handleFilterChange("app")}
+          className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+            activeFilter === "app"
+              ? "bg-purple-600 text-white shadow-lg shadow-purple-500/20"
+              : "bg-[var(--background)] shadow-lg border border-zinc-100  dark:border-zinc-800 text-[var(--foreground)] hover:shadow-purple-500/10 hover:border-purple-500/30"
+          }`}
+        >
+          Apps
+        </button>
+        <button
+          onClick={() => handleFilterChange("automacao")}
+          className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+            activeFilter === "automacao"
+              ? "bg-purple-600 text-white shadow-lg shadow-purple-500/20"
+              : "bg-[var(--background)] shadow-lg border border-zinc-100  dark:border-zinc-800 text-[var(--foreground)] hover:shadow-purple-500/10 hover:border-purple-500/30"
+          }`}
+        >
+          Automação
+        </button>
+      </div>
+
+      {/* No projects message */}
+      {filteredProjects.length === 0 && (
+        <div className="text-center py-12">
+          <p className="text-gray-400 text-lg">
+            Nenhum projeto encontrado para este filtro.
+          </p>
+        </div>
+      )}
+
       {/* Desktop Grid View */}
       <div className="hidden md:grid md:grid-cols-2 xl:grid-cols-3 gap-8">
-        {projects.map((project) => (
+        {filteredProjects.map((project) => (
           <motion.div
             key={project.id}
             initial={{ opacity: 0, y: 20 }}
@@ -277,65 +380,61 @@ export default function ProjectGrid() {
       </div>
 
       {/* Mobile Carousel View */}
-      <div className="md:hidden relative" ref={carouselRef}>
-        <div className="overflow-hidden px-2">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={current}
-              initial={{ opacity: 0, x: 100 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -100 }}
-              transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="pb-4"
-            >
-              {renderProject(projects[current])}
-            </motion.div>
-          </AnimatePresence>
+      {filteredProjects.length > 0 && (
+        <div className="md:hidden relative" ref={carouselRef}>
+          <div className="overflow-hidden px-2">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={current}
+                initial={{ opacity: 0, x: 100 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -100 }}
+                transition={{ type: "spring", damping: 25, stiffness: 200 }}
+                className="pb-4"
+              >
+                {renderProject(filteredProjects[current])}
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          {filteredProjects.length > 1 && (
+            <>
+              <button
+                className="absolute left-0 top-1/3 transform -translate-y-1/2 bg-zinc-800/90 text-purple-400 rounded-full p-2.5 z-10 shadow-lg border border-purple-500/30 hover:bg-zinc-800 transition-colors duration-300"
+                onClick={prev}
+                aria-label="Projeto anterior"
+              >
+                <ChevronLeft className="h-5 w-5" />
+              </button>
+              <button
+                className="absolute right-0 top-1/3 transform -translate-y-1/2 bg-zinc-800/90 text-purple-400 rounded-full p-2.5 z-10 shadow-lg border border-purple-500/30 hover:bg-zinc-800 transition-colors duration-300"
+                onClick={next}
+                aria-label="Próximo projeto"
+              >
+                <ChevronRight className="h-5 w-5" />
+              </button>
+
+              <div className="flex justify-center mt-6 space-x-2">
+                {filteredProjects.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => {
+                      setAutoplay(false);
+                      setCurrent(index);
+                    }}
+                    className={`h-2 rounded-full transition-all duration-300 ${
+                      current === index
+                        ? "bg-purple-600 w-8"
+                        : "bg-zinc-700 w-2 hover:bg-purple-500/50"
+                    }`}
+                    aria-label={`Ir para projeto ${index + 1}`}
+                  />
+                ))}
+              </div>
+            </>
+          )}
         </div>
-
-        <button
-          className="absolute left-0 top-1/3 transform -translate-y-1/2 bg-zinc-800/90 text-purple-400 rounded-full p-2.5 z-10 shadow-lg border border-purple-500/30 hover:bg-zinc-800 transition-colors duration-300"
-          onClick={prev}
-          aria-label="Projeto anterior"
-        >
-          <ChevronLeft className="h-5 w-5" />
-        </button>
-        <button
-          className="absolute right-0 top-1/3 transform -translate-y-1/2 bg-zinc-800/90 text-purple-400 rounded-full p-2.5 z-10 shadow-lg border border-purple-500/30 hover:bg-zinc-800 transition-colors duration-300"
-          onClick={next}
-          aria-label="Próximo projeto"
-        >
-          <ChevronRight className="h-5 w-5" />
-        </button>
-
-        <div className="flex justify-center mt-6 space-x-2">
-          {projects.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => {
-                setAutoplay(false);
-                setCurrent(index);
-              }}
-              className={`h-2 rounded-full transition-all duration-300 ${
-                current === index
-                  ? "bg-purple-600 w-8"
-                  : "bg-zinc-700 w-2 hover:bg-purple-500/50"
-              }`}
-              aria-label={`Ir para projeto ${index + 1}`}
-            />
-          ))}
-        </div>
-      </div>
-
-      {/* <div className="flex justify-center mt-16">
-        <Button
-          variant="outline"
-          className="border-purple-600 text-purple-300 hover:bg-purple-900/20 hover:text-white cursor-pointer group px-6 py-6 text-base font-medium transition-all duration-300 shadow-md hover:shadow-purple-500/20"
-        >
-          Ver Todos os Projetos
-          <ExternalLink className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
-        </Button>
-      </div> */}
+      )}
     </div>
   );
 }

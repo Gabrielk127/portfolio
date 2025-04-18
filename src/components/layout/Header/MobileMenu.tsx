@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiMenu, FiX } from "react-icons/fi"; // Ícones de menu e X
+import ThemeToggle from "../ThemeToggle";
 
 const MobileMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -62,9 +63,9 @@ const MobileMenu = () => {
   return (
     <div className="relative">
       {/* Header fixo com o ícone do menu */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-black bg-opacity-30 backdrop-blur-lg shadow-lg py-4 max-w-[1200px] rounded-3xl mt-4 mx-4 flex justify-between items-center px-6">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-[var(--background)] bg-opacity-30 backdrop-blur-lg shadow-lg py-4 max-w-[1200px] rounded-3xl mt-4 mx-4 flex justify-between items-center px-6">
         <div className="text-white text-xl font-bold">
-          <a href="#inicio" className="text-white">
+          <a href="#inicio" className="text-[var(--foreground)]">
             Gabriel <span className="text-principal">Fernandes</span>
           </a>
         </div>
@@ -75,9 +76,9 @@ const MobileMenu = () => {
             transition={{ duration: 0.3 }}
           >
             {isOpen ? (
-              <FiX className="h-8 w-8 text-white" />
+              <FiX className="h-8 w-8 text-[var(--foreground)]" />
             ) : (
-              <FiMenu className="h-10 w-10 text-white" />
+              <FiMenu className="h-10 w-10 text-[var(--foreground)]" />
             )}
           </motion.div>
         </button>
@@ -91,7 +92,7 @@ const MobileMenu = () => {
             animate="visible"
             exit="exit"
             variants={menuVariants}
-            className="fixed inset-x-0 z-40 flex flex-col items-center justify-start h-full bg-black bg-opacity-30 backdrop-blur-lg shadow-lg text-white py-16 px-8 mx-4 mt-20 rounded-3xl rounded-b-xl"
+            className="fixed inset-x-0 z-40 flex flex-col items-center justify-start h-full bg-[var(--background)] bg-opacity-30 backdrop-blur-lg shadow-lg text-white py-16 px-8 mx-4 mt-20 rounded-3xl rounded-b-xl"
           >
             <motion.ul className="space-y-8 text-center">
               {[
@@ -107,7 +108,7 @@ const MobileMenu = () => {
                   initial="hidden"
                   animate="visible"
                   variants={itemVariants}
-                  className="text-xl hover:text-principal cursor-pointer transition duration-300"
+                  className="text-xl text-[var(--foreground)] hover:text-principal cursor-pointer transition duration-300"
                   onClick={() => handleNavigation(item)}
                 >
                   {item}
@@ -118,7 +119,7 @@ const MobileMenu = () => {
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0, transition: { delay: 0.5 } }}
-              className="mt-8"
+              className="my-8"
             >
               {" "}
               <a
@@ -133,6 +134,7 @@ const MobileMenu = () => {
                 </button>
               </a>
             </motion.div>
+            <ThemeToggle />
           </motion.div>
         )}
       </AnimatePresence>

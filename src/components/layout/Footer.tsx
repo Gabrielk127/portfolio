@@ -12,7 +12,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-[#1A1A1A] text-white py-8">
+    <footer className="bg-[var(--background)] text-[var(--text-foreground)] py-8">
       <div className="container mx-auto px-4 max-w-[1200px]">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-6 md:mb-0">
@@ -50,7 +50,7 @@ export default function Footer() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-sm text-white hover:text-principal transition"
+                    className="text-sm text-[var(--foreground)] hover:text-principal transition"
                   >
                     {item.label}
                   </Link>

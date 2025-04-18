@@ -71,25 +71,27 @@ const JobEntry: React.FC<{
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="bg-black bg-opacity-30 backdrop-blur-lg shadow-lg py-4 px-6 rounded-2xl text-white border border-zinc-800 my-2"
+      className="bg-[var(--background)]  backdrop-blur-lg shadow-lg py-4 px-6 rounded-2xl text-white border  border-zinc-100 dark:border-zinc-800 my-2"
     >
       <div
         className="flex justify-between items-center cursor-pointer gap-6"
         onClick={onToggle}
       >
         <div>
-          <h3 className="text-base sm:text-lg font-semibold">
+          <h3 className="text-[var(--foreground)] text-base sm:text-lg font-semibold">
             {job.title} - {job.company}
           </h3>
         </div>
         <div className="flex items-center">
-          <span className="mr-2 text-sm text-nowrap">{job.period}</span>
+          <span className="text-[var(--foreground)] mr-2 text-sm text-nowrap">
+            {job.period}
+          </span>
           <motion.div
             initial={false}
             animate={{ rotate: isOpen ? 180 : 0 }}
             transition={{ duration: 0.3 }}
           >
-            <ChevronDown className="w-5 h-5" />
+            <ChevronDown className="text-[var(--foreground)] w-5 h-5" />
           </motion.div>
         </div>
       </div>
@@ -102,7 +104,7 @@ const JobEntry: React.FC<{
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
           >
-            <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4 text-[var(--text-foreground)]">
               <div className="col-span-2">
                 {job.location && (
                   <motion.p
@@ -181,7 +183,7 @@ const JobEntry: React.FC<{
   );
 };
 
-const ProfessionalExperience: React.FC = () => {
+const SectionExperience: React.FC = () => {
   const [openJobIndex, setOpenJobIndex] = useState(0);
 
   return (
@@ -189,13 +191,14 @@ const ProfessionalExperience: React.FC = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="p-4 md:p-6 lg:p-8 max-w-7xl mx-auto md:mt-12 text-white "
+      id="experiencia"
+      className="p-4 md:p-6 lg:p-8 max-w-7xl mx-auto md:mt-12"
     >
       <motion.h1
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2, duration: 0.5 }}
-        className="text-center md:text-start text-3xl text-white font-bold mb-12"
+        className="text-center md:text-start text-3xl text-[var(--foreground)] font-bold mb-12"
       >
         Experiência Profissional
       </motion.h1>
@@ -211,4 +214,4 @@ const ProfessionalExperience: React.FC = () => {
   );
 };
 
-export default ProfessionalExperience;
+export default SectionExperience;

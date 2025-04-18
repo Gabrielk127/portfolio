@@ -125,8 +125,8 @@ export function ResponsiveCarousel() {
 
 function FeedCard({ name, image, description }: Feedback) {
   return (
-    <main className="bg-black bg-opacity-30 backdrop-blur-lg shadow-lg py-12 px-12 rounded-3xl">
-      <div className="text-white font-bold text-sm mb-6 text-center md:text-start">
+    <main className="bg-[var(--background)] border border-zinc-100 dark:border-zinc-800 backdrop-blur-lg shadow-lg py-12 px-12 rounded-3xl my-8">
+      <div className="text-[var(--foreground)] font-bold text-sm mb-6 text-center md:text-start">
         {description}
       </div>
       <div className="flex flex-row gap-2 justify-end items-center">
@@ -145,10 +145,13 @@ function FeedCard({ name, image, description }: Feedback) {
   );
 }
 
-export default function Testimonials() {
+export default function SectionTestimonials() {
   return (
-    <main className=" text-white p-4 md:p-6 lg:p-8 max-w-7xl mx-auto mt-12 mb-32 flex flex-col justify-center items-center">
-      <h2 className="text-center text-3xl text-white font-bold mb-12">
+    <main
+      id="depoimentos"
+      className=" p-4 md:p-6 lg:p-8 max-w-7xl mx-auto mt-12 mb-32 flex flex-col justify-center items-center"
+    >
+      <h2 className="text-center text-3xl text-[var(--foreground)] font-bold mb-12">
         Meus Projetos
       </h2>
 
